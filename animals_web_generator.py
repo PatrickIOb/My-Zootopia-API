@@ -1,5 +1,4 @@
 import json
-import requests
 import data_fetcher
 
 # Funktion zum Erstellen des HTML-Codes für ein einzelnes Tier

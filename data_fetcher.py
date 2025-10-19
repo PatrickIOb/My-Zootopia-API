@@ -1,6 +1,6 @@
 import json
 import requests
-import animals_web_generator
+
 
 API_KEY = "I/qKGCs0oxX2XFwmfBo46A==whYupgYwUBaeWAdy"
 
