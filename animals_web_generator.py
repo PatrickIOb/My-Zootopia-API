@@ -39,10 +39,14 @@ def serialize_animal(animal_obj):
 # Hauptfunktion
 def main():
     #userinput for entering an animal name
-    animal_to_search = input("What animal to search for? ")
+    animal_to_search = input("What animal to search for? ").lower()
     #fetch the data from the API
     res = requests.get("https://api.api-ninjas.com/v1/animals", headers={"x-api-key": API_KEY}, params={"name": animal_to_search})
     data = res.json()
+    print(data)
+
+    if animal_to_search not in data[0]["name"].lower():
+        print(f"The animal {animal_to_search} was not found. Please try again.")
     #create json file with the animal data
     with open("animals_data.json", "w") as animals_file:
         animals_file.write(json.dumps(data))
@@ -67,7 +71,8 @@ def main():
     with open("animals.html", "w") as output_file:
         output_file.write(new_html)
 
-    print(f"Website was successfully generated for the animal: {animal_to_search}. You can find it under animals.html")
+    if animal_to_search in data[0]["name"].lower():
+        print(f"Website was successfully generated for the animal: {animal_to_search}. You can find it under animals.html")
 
 
 # Programm starten
