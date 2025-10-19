@@ -1,7 +1,6 @@
 import json
 import requests
-
-API_KEY = "I/qKGCs0oxX2XFwmfBo46A==whYupgYwUBaeWAdy"
+import data_fetcher
 
 # Funktion zum Erstellen des HTML-Codes für ein einzelnes Tier
 def serialize_animal(animal_obj):
@@ -41,9 +40,8 @@ def main():
     #userinput for entering an animal name
     animal_to_search = input("What animal to search for? ").lower()
     #fetch the data from the API
-    res = requests.get("https://api.api-ninjas.com/v1/animals", headers={"x-api-key": API_KEY}, params={"name": animal_to_search})
-    data = res.json()
-    print(data)
+    data = data_fetcher.fetch_data(animal_to_search)
+
 
     if animal_to_search not in data[0]["name"].lower():
         print(f"The animal {animal_to_search} was not found. Please try again.")
