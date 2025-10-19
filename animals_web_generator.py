@@ -1,6 +1,7 @@
 import json
 import data_fetcher
 
+
 # Funktion zum Erstellen des HTML-Codes für ein einzelnes Tier
 def serialize_animal(animal_obj):
     output = ''  # define an empty string
